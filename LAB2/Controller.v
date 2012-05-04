@@ -43,9 +43,9 @@ begin
 		begin
 			if(transEna)
 			begin
-				if(address == 5'd23)
+				if(address == 5'd22)
 				begin
-					state = s_Keypad;
+					state = s_Keypad_idle;
 					address = address;
 				end
 				else
@@ -80,7 +80,7 @@ begin
 		begin
 			address = address;
 			if(transEna)
-				if(!|Ascii)
+				if(!(|Ascii))
 					state = s_idle;
 				else
 					state = s_Keypad_idle;

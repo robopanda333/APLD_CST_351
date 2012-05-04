@@ -20,19 +20,33 @@ module Lab2(
 
 wire clk_1KHz;
 
-wire	[7:0]	cnt_d;
+wire	[7:0]	cnt_d,
+				Ascii;
+wire	[3:0]	K_O_tmp;
 wire			cnt_ena,
-				cnt_d_rdy;
+				cnt_d_rdy,
+				Ascii_rdy;
 
 CLKDIV cckdv(CLK, clk_1KHz);
+
+KP_top kp(
+				.CLK(clk_1KHz),
+				.K_I(K_I),
+				.K_O(K_O_tmp),
+				.Ascii(Ascii),
+				.d_rdy(Ascii_rdy)
+);
+tristate ts(K_O_tmp,K_O);
 
 Controller cnt(
 					.clk(clk_1KHz),
 					.Data(cnt_d),
 					.Data_rdy(cnt_d_rdy),
-					.transEna(cnt_ena)
+					.transEna(cnt_ena),
+					.Ascii(Ascii),
+					.Ascii_Rdy(Ascii_rdy)
 );
-assign {LED_LEFT, LED_RIGHT} = cnt_d;
+
 SPI spi(
 		.clk(clk_1KHz),
 		.s_clk(sClk),
@@ -43,6 +57,20 @@ SPI spi(
 		.int(cnt_ena)
 );
 
+assign {LED_LEFT, LED_RIGHT} = ~{K_I,K_O_tmp};
 
 endmodule
+
+
+
+module tristate(
+input [3:0] in,
+inout [3:0] out
+);
+	assign out[0] = in[0]?1'bZ:1'b0;
+	assign out[1] = in[1]?1'bZ:1'b0;
+	assign out[2] = in[2]?1'bZ:1'b0;
+	assign out[3] = in[3]?1'bZ:1'b0;
+endmodule
+
 
