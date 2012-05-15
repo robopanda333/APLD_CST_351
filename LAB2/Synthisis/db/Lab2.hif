@@ -1,0 +1,501 @@
+Quartus II 32-bit
+Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+50
+4931
+OFF
+OFF
+OFF
+ON
+ON
+OFF
+FV_OFF
+Level2
+0
+0
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+Lab2
+# storage
+db|Lab2.(0).cnf
+db|Lab2.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+lab2.v
+45abec480aedea54efa24b0ad6f277e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+KP_top
+# storage
+db|Lab2.(2).cnf
+db|Lab2.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+kp|kp_top.v
+f0aa20c7554350a0d091c79d132d9917
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+KP_top:kp
+}
+# macro_sequence
+
+# end
+# entity
+KP_Scan
+# storage
+db|Lab2.(3).cnf
+db|Lab2.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+kp|kp_scan.v
+1bba79abb8eb749793f6f023e020e7fc
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+KP_top:kp|KP_Scan:sc
+}
+# macro_sequence
+
+# end
+# entity
+KP_sMachine
+# storage
+db|Lab2.(4).cnf
+db|Lab2.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+kp|kp_smachine.v
+955cd963d32bda3906f32c49b2eb640
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+s_SCAN
+0
+PARAMETER_SIGNED_DEC
+DEF
+s_PRESSED
+1
+PARAMETER_SIGNED_DEC
+DEF
+s_RELEASED
+2
+PARAMETER_SIGNED_DEC
+DEF
+s_DEBOUNCE
+3
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+KP_top:kp|KP_sMachine:stm
+}
+# macro_sequence
+
+# end
+# entity
+KP_Latch
+# storage
+db|Lab2.(5).cnf
+db|Lab2.(5).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+kp|kp_latch.v
+ca4393145c8a2cc8bd93569d4d44bbb1
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+KP_top:kp|KP_Latch:lc
+}
+# macro_sequence
+
+# end
+# entity
+KP_Key_Ascii
+# storage
+db|Lab2.(6).cnf
+db|Lab2.(6).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+kp|kp_key_ascii.v
+4d61991b875973aa755a2d007536f0
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+s_first
+0
+PARAMETER_SIGNED_DEC
+DEF
+s_second
+1
+PARAMETER_SIGNED_DEC
+DEF
+s_back
+2
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+KP_top:kp|KP_Key_Ascii:as
+}
+# macro_sequence
+
+# end
+# entity
+tristate
+# storage
+db|Lab2.(7).cnf
+db|Lab2.(7).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+lab2.v
+45abec480aedea54efa24b0ad6f277e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+tristate:ts
+}
+# macro_sequence
+
+# end
+# entity
+Controller
+# storage
+db|Lab2.(8).cnf
+db|Lab2.(8).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+controller.v
+f8f7d5e6f28d5095101bc721c4969
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+s_idle
+0
+PARAMETER_SIGNED_DEC
+DEF
+s_sendData
+1
+PARAMETER_SIGNED_DEC
+DEF
+s_waitInt
+2
+PARAMETER_SIGNED_DEC
+DEF
+s_Keypad_idle
+3
+PARAMETER_SIGNED_DEC
+DEF
+s_Keypad_send
+4
+PARAMETER_SIGNED_DEC
+DEF
+s_Keypad_wait
+5
+PARAMETER_SIGNED_DEC
+DEF
+}
+# include_file {
+rom.txt
+cfd13e64f138d8f3d0aba339ba2b65f
+}
+# hierarchies {
+Controller:cnt
+}
+# macro_sequence
+
+# end
+# entity
+SPI
+# storage
+db|Lab2.(9).cnf
+db|Lab2.(9).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+spi.v
+ddd2032bd20e83972dfec98261b45cb
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+s_idle
+0
+PARAMETER_SIGNED_DEC
+DEF
+s_ss_to_on
+1
+PARAMETER_SIGNED_DEC
+DEF
+s_shifting
+2
+PARAMETER_SIGNED_DEC
+DEF
+s_ss_to_off
+3
+PARAMETER_SIGNED_DEC
+DEF
+}
+# hierarchies {
+SPI:spi
+}
+# macro_sequence
+
+# end
+# entity
+shift
+# storage
+db|Lab2.(10).cnf
+db|Lab2.(10).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+spi.v
+ddd2032bd20e83972dfec98261b45cb
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+SPI:spi|shift:U1
+}
+# macro_sequence
+
+# end
+# entity
+CLKDIV
+# storage
+db|Lab2.(1).cnf
+db|Lab2.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+clkdiv.v
+ce6df101f6cac670543b65e12b269a
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+CLKDIV:cckdv
+}
+# macro_sequence
+
+# end
+# complete
+

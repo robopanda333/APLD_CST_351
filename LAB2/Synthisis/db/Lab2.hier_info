@@ -1,0 +1,192 @@
+|Lab2
+CLK => comb.DATAIN
+K_I[0] => comb.DATAIN
+K_I[1] => comb.DATAIN
+K_I[2] => comb.DATAIN
+K_I[3] => comb.DATAIN
+K_O[0] <> tristate:ts.port1
+K_O[1] <> tristate:ts.port1
+K_O[2] <> tristate:ts.port1
+K_O[3] <> tristate:ts.port1
+sIn => ~NO_FANOUT~
+
+
+|Lab2|CLKDIV:cckdv
+CLK => CLK_1k~reg0.CLK
+CLK => count[0].CLK
+CLK => count[1].CLK
+CLK => count[2].CLK
+CLK => count[3].CLK
+CLK => count[4].CLK
+CLK => count[5].CLK
+CLK => count[6].CLK
+CLK => count[7].CLK
+CLK => count[8].CLK
+CLK => count[9].CLK
+CLK => count[10].CLK
+CLK => count[11].CLK
+CLK => count[12].CLK
+CLK => count[13].CLK
+CLK => count[14].CLK
+
+
+|Lab2|KP_top:kp
+CLK => CLK.IN3
+K_I[0] => K_I[0].IN1
+K_I[1] => K_I[1].IN1
+K_I[2] => K_I[2].IN1
+K_I[3] => K_I[3].IN1
+
+
+|Lab2|KP_top:kp|KP_Scan:sc
+CLK => count[0].CLK
+CLK => count[1].CLK
+EN => count[1].ENA
+EN => count[0].ENA
+
+
+|Lab2|KP_top:kp|KP_sMachine:stm
+clk => load~reg0.CLK
+clk => latch~reg0.CLK
+clk => count[0].CLK
+clk => count[1].CLK
+clk => state~2.DATAIN
+en => Selector0.IN3
+en => state.DATAB
+en => Selector1.IN1
+en => Selector1.IN2
+
+
+|Lab2|KP_top:kp|KP_Latch:lc
+ena => d_l[1].CLK
+ena => d_l[2].CLK
+ena => d_l[3].CLK
+ena => d_l[5].CLK
+ena => d_l[6].CLK
+ena => d_l[7].CLK
+d[0] => ~NO_FANOUT~
+d[1] => d_l[1].DATAIN
+d[2] => d_l[2].DATAIN
+d[3] => d_l[3].DATAIN
+d[4] => ~NO_FANOUT~
+d[5] => d_l[5].DATAIN
+d[6] => d_l[6].DATAIN
+d[7] => d_l[7].DATAIN
+
+
+|Lab2|KP_top:kp|KP_Key_Ascii:as
+clk => Ascii[0]~reg0.CLK
+clk => Ascii[1]~reg0.CLK
+clk => Ascii[2]~reg0.CLK
+clk => Ascii[3]~reg0.CLK
+clk => Ascii[4]~reg0.CLK
+clk => Ascii[5]~reg0.CLK
+clk => Ascii[6]~reg0.CLK
+clk => Ascii[7]~reg0.CLK
+clk => Ascii_valid~reg0.CLK
+clk => state~1.DATAIN
+valid => always0.IN1
+valid => Equal1.IN3
+valid => Equal2.IN3
+valid => Ascii_valid.DATAA
+d[0] => Decoder0.IN3
+d[0] => Equal0.IN2
+d[1] => Decoder0.IN2
+d[1] => Equal0.IN1
+d[2] => Decoder0.IN1
+d[2] => Equal0.IN0
+d[3] => Decoder0.IN0
+d[3] => Equal0.IN3
+
+
+|Lab2|tristate:ts
+in[0] => out[0].OE
+in[1] => out[1].OE
+in[2] => out[2].OE
+in[3] => out[3].OE
+out[0] <> out[0]
+out[1] <> out[1]
+out[2] <> out[2]
+out[3] <> out[3]
+
+
+|Lab2|Controller:cnt
+clk => address[0].CLK
+clk => address[1].CLK
+clk => address[2].CLK
+clk => address[3].CLK
+clk => address[4].CLK
+clk => state~2.DATAIN
+transEna => state.OUTPUTSELECT
+transEna => state.OUTPUTSELECT
+transEna => address.OUTPUTSELECT
+transEna => address.OUTPUTSELECT
+transEna => address.OUTPUTSELECT
+transEna => address.OUTPUTSELECT
+transEna => address.OUTPUTSELECT
+transEna => Equal1.IN2
+transEna => state.OUTPUTSELECT
+transEna => state.OUTPUTSELECT
+transEna => Selector3.IN2
+transEna => Selector1.IN2
+Ascii[0] => WideOr0.IN0
+Ascii[0] => Data.DATAA
+Ascii[1] => WideOr0.IN1
+Ascii[1] => Data.DATAA
+Ascii[2] => WideOr0.IN2
+Ascii[2] => Data.DATAA
+Ascii[3] => WideOr0.IN3
+Ascii[3] => Data.DATAA
+Ascii[4] => WideOr0.IN4
+Ascii[4] => Data.DATAA
+Ascii[5] => WideOr0.IN5
+Ascii[5] => Data.DATAA
+Ascii[6] => WideOr0.IN6
+Ascii[6] => Data.DATAA
+Ascii[7] => WideOr0.IN7
+Ascii[7] => Data.DATAA
+Ascii_Rdy => Equal1.IN3
+
+
+|Lab2|SPI:spi
+clk => clk.IN1
+Data_rdy => state.DATAB
+Data_rdy => Selector0.IN2
+d[0] => d[0].IN1
+d[1] => d[1].IN1
+d[2] => d[2].IN1
+d[3] => d[3].IN1
+d[4] => d[4].IN1
+d[5] => d[5].IN1
+d[6] => d[6].IN1
+d[7] => d[7].IN1
+
+
+|Lab2|SPI:spi|shift:U1
+d[0] => tmp.DATAB
+d[1] => tmp.DATAB
+d[2] => tmp.DATAB
+d[3] => tmp.DATAB
+d[4] => tmp.DATAB
+d[5] => tmp.DATAB
+d[6] => tmp.DATAB
+d[7] => tmp.DATAB
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+load => tmp.OUTPUTSELECT
+clk => tmp[0].CLK
+clk => tmp[1].CLK
+clk => tmp[2].CLK
+clk => tmp[3].CLK
+clk => tmp[4].CLK
+clk => tmp[5].CLK
+clk => tmp[6].CLK
+clk => tmp[7].CLK
+clk => so~reg0.CLK
+
+

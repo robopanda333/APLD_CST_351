@@ -1,0 +1,41 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Setup 'CLKDIV:cckdv|CLK_1k'
+Slack : -4.214
+TNS   : -94.432
+
+Type  : Setup 'CLK'
+Slack : -3.419
+TNS   : -52.096
+
+Type  : Setup 'KP_top:kp|KP_sMachine:stm|latch'
+Slack : -1.142
+TNS   : -3.140
+
+Type  : Hold 'CLK'
+Slack : -1.313
+TNS   : -1.313
+
+Type  : Hold 'CLKDIV:cckdv|CLK_1k'
+Slack : 0.639
+TNS   : 0.000
+
+Type  : Hold 'KP_top:kp|KP_sMachine:stm|latch'
+Slack : 1.500
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'CLK'
+Slack : -2.289
+TNS   : -2.289
+
+Type  : Minimum Pulse Width 'CLKDIV:cckdv|CLK_1k'
+Slack : 0.334
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'KP_top:kp|KP_sMachine:stm|latch'
+Slack : 0.334
+TNS   : 0.000
+
+------------------------------------------------------------

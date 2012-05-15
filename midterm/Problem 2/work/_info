@@ -1,0 +1,43 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Modeltech_pe_edu_10.1b\examples
+vbcd_add
+Z1 !s100 S1BY1LX]XY4I6KCAdEHdQ1
+Z2 IlWnlPOM:QgnK`9XN`OUIS1
+Z3 V72Q4;k3ckH=IjH<B]1:1J2
+Z4 dC:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Problem 2
+Z5 w1337122642
+Z6 8C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Problem 2/bcd_add.v
+Z7 FC:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Problem 2/bcd_add.v
+L0 5
+Z8 OP;L;10.1b;51
+r1
+31
+Z9 !s90 -reportprogress|300|-work|work|C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Problem 2/bcd_add.v|
+Z10 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -O0
+!i10b 1
+!s85 0
+Z11 !s108 1337122662.313000
+Z12 !s107 C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Problem 2/bcd_add.v|
+!s101 -O0
+vbcd_add_test
+!i10b 1
+Z13 !s100 9cFVRDjA2iHb23fc^d;bM2
+Z14 IfD`:PMGYWEo_;fm4LG[VW2
+Z15 Vilb4if7HnEa0zeBUe>U[d2
+R4
+Z16 w1337121999
+Z17 8C:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Problem 2\bcd_add_test.v
+Z18 FC:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Problem 2\bcd_add_test.v
+L0 4
+R8
+r1
+!s85 0
+31
+!s108 1337122662.384000
+!s107 C:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Problem 2\bcd_add_test.v|
+Z19 !s90 -reportprogress|300|-work|work|C:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Problem 2\bcd_add_test.v|
+!s101 -O0
+R10

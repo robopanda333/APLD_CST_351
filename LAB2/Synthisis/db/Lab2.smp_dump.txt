@@ -1,0 +1,29 @@
+
+State Machine - |Lab2|SPI:spi|state
+Name state.s_ss_to_off state.s_shifting state.s_ss_to_on state.s_idle 
+state.s_idle 0 0 0 0 
+state.s_ss_to_on 0 0 1 1 
+state.s_shifting 0 1 0 1 
+state.s_ss_to_off 1 0 0 1 
+
+State Machine - |Lab2|Controller:cnt|state
+Name state.s_Keypad_wait state.s_Keypad_send state.s_Keypad_idle state.s_waitInt state.s_sendData state.s_idle 
+state.s_idle 0 0 0 0 0 0 
+state.s_sendData 0 0 0 0 1 1 
+state.s_waitInt 0 0 0 1 0 1 
+state.s_Keypad_idle 0 0 1 0 0 1 
+state.s_Keypad_send 0 1 0 0 0 1 
+state.s_Keypad_wait 1 0 0 0 0 1 
+
+State Machine - |Lab2|KP_top:kp|KP_Key_Ascii:as|state
+Name state.s_first state.s_back state.s_second 
+state.s_first 0 0 0 
+state.s_second 1 0 1 
+state.s_back 1 1 0 
+
+State Machine - |Lab2|KP_top:kp|KP_sMachine:stm|state
+Name state.s_DEBOUNCE state.s_RELEASED state.s_PRESSED state.s_SCAN 
+state.s_SCAN 0 0 0 0 
+state.s_PRESSED 0 0 1 1 
+state.s_RELEASED 0 1 0 1 
+state.s_DEBOUNCE 1 0 0 1 

@@ -1,0 +1,8 @@
+{C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Problem 2/bcd_add.v} {1 {vlog -work work {C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Problem 2/bcd_add.v}
+Model Technology ModelSim PE Student Edition vlog 10.1b Compiler 2012.04 Apr 27 2012
+-- Compiling module bcd_add
+
+Top level modules:
+	bcd_add
+
+} {} {}}
