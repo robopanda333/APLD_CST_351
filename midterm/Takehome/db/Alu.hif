@@ -1,0 +1,255 @@
+Quartus II 32-bit
+Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+50
+4931
+OFF
+OFF
+OFF
+ON
+ON
+OFF
+FV_OFF
+Level2
+0
+0
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+Alu
+# storage
+db|Alu.(0).cnf
+db|Alu.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu.v
+2c18eb15635776abdf898e58116b88e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+datalatch
+# storage
+db|Alu.(1).cnf
+db|Alu.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu.v
+2c18eb15635776abdf898e58116b88e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+datalatch:Alatch
+datalatch:Blatch
+datalatch:opCode
+}
+# macro_sequence
+
+# end
+# entity
+Math
+# storage
+db|Alu.(2).cnf
+db|Alu.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu.v
+2c18eb15635776abdf898e58116b88e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+Add
+000
+PARAMETER_UNSIGNED_BIN
+DEF
+Sub
+001
+PARAMETER_UNSIGNED_BIN
+DEF
+NotA
+010
+PARAMETER_UNSIGNED_BIN
+DEF
+NotB
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+And
+100
+PARAMETER_UNSIGNED_BIN
+DEF
+Or
+101
+PARAMETER_UNSIGNED_BIN
+DEF
+Xor
+110
+PARAMETER_UNSIGNED_BIN
+DEF
+Xnor
+111
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# hierarchies {
+Math:math
+}
+# macro_sequence
+
+# end
+# entity
+Controller
+# storage
+db|Alu.(3).cnf
+db|Alu.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+alu.v
+2c18eb15635776abdf898e58116b88e
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+s_Reset
+000
+PARAMETER_UNSIGNED_BIN
+DEF
+s_Ready
+001
+PARAMETER_UNSIGNED_BIN
+DEF
+s_LatchA
+010
+PARAMETER_UNSIGNED_BIN
+DEF
+s_LatchB
+011
+PARAMETER_UNSIGNED_BIN
+DEF
+s_Work
+100
+PARAMETER_UNSIGNED_BIN
+DEF
+s_Done
+101
+PARAMETER_UNSIGNED_BIN
+DEF
+o_Reset
+0001000
+PARAMETER_UNSIGNED_BIN
+DEF
+o_Ready
+0000010
+PARAMETER_UNSIGNED_BIN
+DEF
+o_LatchA
+1000100
+PARAMETER_UNSIGNED_BIN
+DEF
+o_LatchB
+0110000
+PARAMETER_UNSIGNED_BIN
+DEF
+o_Work
+0000000
+PARAMETER_UNSIGNED_BIN
+DEF
+o_Done
+0000001
+PARAMETER_UNSIGNED_BIN
+DEF
+}
+# hierarchies {
+Controller:cnt
+}
+# macro_sequence
+
+# end
+# complete
+

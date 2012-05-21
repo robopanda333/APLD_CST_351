@@ -1,0 +1,9 @@
+
+State Machine - |Alu|Controller:cnt|state
+Name state.s_Done state.s_Work state.s_LatchB state.s_LatchA state.s_Ready state.s_Reset 
+state.s_Reset 0 0 0 0 0 0 
+state.s_Ready 0 0 0 0 1 1 
+state.s_LatchA 0 0 0 1 0 1 
+state.s_LatchB 0 0 1 0 0 1 
+state.s_Work 0 1 0 0 0 1 
+state.s_Done 1 0 0 0 0 1 

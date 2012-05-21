@@ -1,0 +1,142 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Problem 2
+vAlu
+Z1 !s100 MdPfAmAL;E2WOINBEQiOR0
+Z2 ISkCFBXgV7HdE62W8[X;nM2
+Z3 V2>6A`5ZTadoDhL<kK_iZj3
+Z4 dC:\SymbolicSource\QuartusProjects\APLD_CST_351\midterm\Takehome\TESTBENCHES
+Z5 w1337392378
+Z6 8C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v
+Z7 FC:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v
+L0 17
+Z8 OP;L;10.1b;51
+r1
+31
+Z9 !s108 1337393188.762000
+Z10 !s107 C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v|
+Z11 !s90 -reportprogress|300|-work|work|C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v|
+Z12 o-work work -L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF -O0
+n@alu
+!i10b 1
+!s85 0
+!s101 -O0
+vALU_top_level
+Z13 I3JRm<^TUT;T0diYg=QlbN3
+Z14 VMTeMfiR>P0FdZE^Z[MU`_0
+R4
+Z15 w1337385960
+R6
+R7
+L0 17
+R8
+r1
+31
+Z16 !s108 1337385969.982000
+R10
+R11
+R12
+Z17 n@a@l@u_top_level
+Z18 !s100 :]V?ATM7V;4XQ@S]W=EA;1
+!i10b 1
+!s85 0
+!s101 -O0
+valu_top_level
+Z19 IKGSWgXoz]3Z0W@bHH@d^j1
+Z20 V6mOIL33BGhF@9DQoYK81k1
+R4
+Z21 w1337385925
+R6
+R7
+L0 17
+R8
+r1
+31
+Z22 !s108 1337385930.786000
+R10
+R11
+R12
+Z23 !s100 bbEPV]5o9[aiZ8_f]FUHV0
+!i10b 1
+!s85 0
+!s101 -O0
+vController
+Z24 !s100 ]5z2_HQJ:`X2hj827C:6H3
+Z25 ICIk>oQc;^WG]MWf1`gGKF1
+Z26 Vzgc[_VBd>Oo7FVkkz;[iF0
+R4
+R5
+R6
+R7
+Z27 L0 113
+R8
+r1
+31
+R9
+R10
+R11
+R12
+Z28 n@controller
+!i10b 1
+!s85 0
+!s101 -O0
+vdatalatch
+Z29 !s100 Dgj]HAmDjH`TB;C>iVL@J3
+Z30 I8NaKhF:dzC=Ajd8kD<Vj]3
+Z31 VFz[zXBV3[20>KVQ;OiMb`1
+R4
+R5
+R6
+R7
+Z32 L0 179
+R8
+r1
+31
+R9
+R10
+R11
+R12
+!i10b 1
+!s85 0
+!s101 -O0
+vMath
+Z33 !s100 ]3j=[`@b3>I6:ol`i<o]J1
+Z34 IIBM_obcaTn36kcTo:3][Y1
+Z35 VBjDQbZY?GV6RHN;NHAOIQ3
+R4
+R5
+R6
+R7
+L0 47
+R8
+r1
+31
+R9
+R10
+R11
+R12
+Z36 n@math
+!i10b 1
+!s85 0
+!s101 -O0
+vtest_alu_top_level
+!i10b 1
+!s100 =856_`JMhNZ9Ce6[oeC6L3
+I[6UJEMGez^loYZRMjDzj13
+Z37 V`4`C@_ngfZO:maVg>e<Ez1
+R4
+w1337393184
+Z38 8C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v
+Z39 FC:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v
+L0 5
+R8
+r1
+!s85 0
+31
+!s108 1337393188.910000
+!s107 C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v|
+Z40 !s90 -reportprogress|300|-work|work|C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v|
+!s101 -O0
+R12

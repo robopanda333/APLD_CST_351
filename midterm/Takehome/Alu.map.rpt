@@ -1,0 +1,342 @@
+Analysis & Synthesis report for Alu
+Fri May 18 17:35:23 2012
+Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Alu|Controller:cnt|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: Math:math
+ 13. Parameter Settings for User Entity Instance: Controller:cnt
+ 14. Port Connectivity Checks: "datalatch:opCode"
+ 15. Analysis & Synthesis Messages
+ 16. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                ;
++-----------------------------+-----------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Fri May 18 17:35:23 2012         ;
+; Quartus II 32-bit Version   ; 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition ;
+; Revision Name               ; Alu                                           ;
+; Top-level Entity Name       ; Alu                                           ;
+; Family                      ; MAX II                                        ;
+; Total logic elements        ; 44                                            ;
+; Total pins                  ; 20                                            ;
+; Total virtual pins          ; 0                                             ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                                 ;
++-----------------------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EPM2210F324C3      ;                    ;
+; Top-level entity name                                                      ; Alu                ; Alu                ;
+; Family name                                                                ; MAX II             ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 6      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                              ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                          ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+
+; Alu.v                            ; yes             ; User Verilog HDL File  ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/midterm/Takehome/Alu.v ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 44    ;
+;     -- Combinational with no register       ; 27    ;
+;     -- Register only                        ; 13    ;
+;     -- Combinational with a register        ; 4     ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 15    ;
+;     -- 3 input functions                    ; 10    ;
+;     -- 2 input functions                    ; 3     ;
+;     -- 1 input functions                    ; 2     ;
+;     -- 0 input functions                    ; 1     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 36    ;
+;     -- arithmetic mode                      ; 8     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 17    ;
+;                                             ;       ;
+; Total registers                             ; 17    ;
+; Total logic cells in carry chains           ; 10    ;
+; I/O pins                                    ; 20    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 17    ;
+; Total fan-out                               ; 166   ;
+; Average fan-out                             ; 2.59  ;
++---------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                    ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name   ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------+--------------+
+; |Alu                       ; 44 (0)      ; 17           ; 0          ; 20   ; 0            ; 27 (0)       ; 13 (0)            ; 4 (0)            ; 10 (0)          ; 0 (0)      ; |Alu                  ; work         ;
+;    |Controller:cnt|        ; 6 (6)       ; 6            ; 0          ; 0    ; 0            ; 0 (0)        ; 2 (2)             ; 4 (4)            ; 0 (0)           ; 0 (0)      ; |Alu|Controller:cnt   ; work         ;
+;    |Math:math|             ; 27 (27)     ; 0            ; 0          ; 0    ; 0            ; 27 (27)      ; 0 (0)             ; 0 (0)            ; 10 (10)         ; 0 (0)      ; |Alu|Math:math        ; work         ;
+;    |datalatch:Alatch|      ; 4 (4)       ; 4            ; 0          ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Alu|datalatch:Alatch ; work         ;
+;    |datalatch:Blatch|      ; 4 (4)       ; 4            ; 0          ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Alu|datalatch:Blatch ; work         ;
+;    |datalatch:opCode|      ; 3 (3)       ; 3            ; 0          ; 0    ; 0            ; 0 (0)        ; 3 (3)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Alu|datalatch:opCode ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------+
+; State Machine - |Alu|Controller:cnt|state                                                                      ;
++----------------+--------------+--------------+----------------+----------------+---------------+---------------+
+; Name           ; state.s_Done ; state.s_Work ; state.s_LatchB ; state.s_LatchA ; state.s_Ready ; state.s_Reset ;
++----------------+--------------+--------------+----------------+----------------+---------------+---------------+
+; state.s_Reset  ; 0            ; 0            ; 0              ; 0              ; 0             ; 0             ;
+; state.s_Ready  ; 0            ; 0            ; 0              ; 0              ; 1             ; 1             ;
+; state.s_LatchA ; 0            ; 0            ; 0              ; 1              ; 0             ; 1             ;
+; state.s_LatchB ; 0            ; 0            ; 1              ; 0              ; 0             ; 1             ;
+; state.s_Work   ; 0            ; 1            ; 0              ; 0              ; 0             ; 1             ;
+; state.s_Done   ; 1            ; 0            ; 0              ; 0              ; 0             ; 1             ;
++----------------+--------------+--------------+----------------+----------------+---------------+---------------+
+
+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; Controller:cnt|state~4                ; Lost fanout        ;
+; Controller:cnt|state~5                ; Lost fanout        ;
+; Controller:cnt|state~6                ; Lost fanout        ;
+; Total Number of Removed Registers = 3 ;                    ;
++---------------------------------------+--------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 17    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 17    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 11    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered          ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------+----------------------------+
+; 8:1                ; 3 bits    ; 15 LEs        ; 15 LEs               ; 0 LEs                  ; |Alu|Math:math|Mux2 ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+---------------------+----------------------------+
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Math:math ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; Add            ; 000   ; Unsigned Binary               ;
+; Sub            ; 001   ; Unsigned Binary               ;
+; NotA           ; 010   ; Unsigned Binary               ;
+; NotB           ; 011   ; Unsigned Binary               ;
+; And            ; 100   ; Unsigned Binary               ;
+; Or             ; 101   ; Unsigned Binary               ;
+; Xor            ; 110   ; Unsigned Binary               ;
+; Xnor           ; 111   ; Unsigned Binary               ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Controller:cnt ;
++----------------+---------+----------------------------------+
+; Parameter Name ; Value   ; Type                             ;
++----------------+---------+----------------------------------+
+; s_Reset        ; 000     ; Unsigned Binary                  ;
+; s_Ready        ; 001     ; Unsigned Binary                  ;
+; s_LatchA       ; 010     ; Unsigned Binary                  ;
+; s_LatchB       ; 011     ; Unsigned Binary                  ;
+; s_Work         ; 100     ; Unsigned Binary                  ;
+; s_Done         ; 101     ; Unsigned Binary                  ;
+; o_Reset        ; 0001000 ; Unsigned Binary                  ;
+; o_Ready        ; 0000010 ; Unsigned Binary                  ;
+; o_LatchA       ; 1000100 ; Unsigned Binary                  ;
+; o_LatchB       ; 0110000 ; Unsigned Binary                  ;
+; o_Work         ; 0000000 ; Unsigned Binary                  ;
+; o_Done         ; 0000001 ; Unsigned Binary                  ;
++----------------+---------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "datalatch:opCode"                                                                                                                         ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                                                                                   ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; d    ; Input  ; Warning  ; Input port expression (3 bits) is smaller than the input port (4 bits) it drives.  Extra input bit(s) "d[3..3]" will be connected to GND. ;
+; q    ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (3 bits) it drives; bit(s) "q[3..3]" have no fanouts                      ;
++------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+    Info: Processing started: Fri May 18 17:35:22 2012
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Alu -c Alu
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 4 design units, including 4 entities, in source file alu.v
+    Info (12023): Found entity 1: Alu
+    Info (12023): Found entity 2: Math
+    Info (12023): Found entity 3: Controller
+    Info (12023): Found entity 4: datalatch
+Info (12127): Elaborating entity "Alu" for the top level hierarchy
+Info (12128): Elaborating entity "datalatch" for hierarchy "datalatch:Alatch"
+Info (12128): Elaborating entity "Math" for hierarchy "Math:math"
+Info (12128): Elaborating entity "Controller" for hierarchy "Controller:cnt"
+Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (17049): 3 registers lost all their fanouts during netlist optimizations. The first 3 are displayed below.
+    Info (17050): Register "Controller:cnt|state~4" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Controller:cnt|state~5" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "Controller:cnt|state~6" lost all its fanouts during netlist optimizations.
+Info (21057): Implemented 64 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 10 output pins
+    Info (21061): Implemented 44 logic cells
+Info (144001): Generated suppressed messages file C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/midterm/Takehome/Alu.map.smsg
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 281 megabytes
+    Info: Processing ended: Fri May 18 17:35:23 2012
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/midterm/Takehome/Alu.map.smsg.
+
+
