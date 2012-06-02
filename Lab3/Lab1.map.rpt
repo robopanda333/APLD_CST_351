@@ -1,0 +1,548 @@
+Analysis & Synthesis report for Lab1
+Sat Jun 02 05:20:00 2012
+Quartus II 32-bit Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Lab1|KP_top:kp|KP_Key_BCD:as|state
+  9. State Machine - |Lab1|KP_top:kp|KP_sMachine:stm|state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Source assignments for Top-level Entity: |Lab1
+ 15. Parameter Settings for User Entity Instance: KP_top:kp|KP_sMachine:stm
+ 16. Parameter Settings for User Entity Instance: KP_top:kp|KP_Key_BCD:as
+ 17. Port Connectivity Checks: "MultiplexedDisplay:lb|MUX4_1x4:m"
+ 18. Port Connectivity Checks: "MultiplexedDisplay:lb|PRIORITY_N_COUNTER:pc"
+ 19. Port Connectivity Checks: "KP_top:kp|KP_Key_BCD:as"
+ 20. Port Connectivity Checks: "KP_top:kp"
+ 21. Analysis & Synthesis Messages
+ 22. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                ;
++-----------------------------+-----------------------------------------------+
+; Analysis & Synthesis Status ; Successful - Sat Jun 02 05:20:00 2012         ;
+; Quartus II 32-bit Version   ; 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition ;
+; Revision Name               ; Lab1                                          ;
+; Top-level Entity Name       ; Lab1                                          ;
+; Family                      ; MAX II                                        ;
+; Total logic elements        ; 109                                           ;
+; Total pins                  ; 33                                            ;
+; Total virtual pins          ; 0                                             ;
+; UFM blocks                  ; 0 / 1 ( 0 % )                                 ;
++-----------------------------+-----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EPM2210F324C3      ;                    ;
+; Top-level entity name                                                      ; Lab1               ; Lab1               ;
+; Family name                                                                ; MAX II             ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 6      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++-----------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path        ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                ;
++-----------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+
+; inputSync.v                             ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/inputSync.v                             ;
+; KP/KP_top.v                             ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/KP/KP_top.v                             ;
+; KP/KP_sMachine.v                        ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/KP/KP_sMachine.v                        ;
+; KP/KP_Scan.v                            ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/KP/KP_Scan.v                            ;
+; KP/KP_Latch.v                           ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/KP/KP_Latch.v                           ;
+; KP/KP_Key_BCD.v                         ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/KP/KP_Key_BCD.v                         ;
+; MultiplexedDisplay/PRIORITY_N_COUNTER.v ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/MultiplexedDisplay/PRIORITY_N_COUNTER.v ;
+; MultiplexedDisplay/MUX4_1x4.v           ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/MultiplexedDisplay/MUX4_1x4.v           ;
+; MultiplexedDisplay/MutiplexedDisplay.v  ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/MultiplexedDisplay/MutiplexedDisplay.v  ;
+; MultiplexedDisplay/BCD_7SEG.v           ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/MultiplexedDisplay/BCD_7SEG.v           ;
+; Lab1.v                                  ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/Lab1.v                                  ;
+; coin_BCD.v                              ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/coin_BCD.v                              ;
+; CoinCounter.v                           ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/CoinCounter.v                           ;
+; CLKDIV.v                                ; yes             ; User Verilog HDL File        ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/CLKDIV.v                                ;
+; nickelval.rom                           ; yes             ; Auto-Found Unspecified File  ; C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/nickelval.rom                           ;
++-----------------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 109   ;
+;     -- Combinational with no register       ; 75    ;
+;     -- Register only                        ; 12    ;
+;     -- Combinational with a register        ; 22    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 48    ;
+;     -- 3 input functions                    ; 11    ;
+;     -- 2 input functions                    ; 31    ;
+;     -- 1 input functions                    ; 3     ;
+;     -- 0 input functions                    ; 4     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 90    ;
+;     -- arithmetic mode                      ; 19    ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 4     ;
+;                                             ;       ;
+; Total registers                             ; 34    ;
+; Total logic cells in carry chains           ; 21    ;
+; I/O pins                                    ; 33    ;
+; Maximum fan-out node                        ; CLK   ;
+; Maximum fan-out                             ; 16    ;
+; Total fan-out                               ; 358   ;
+; Average fan-out                             ; 2.52  ;
++---------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                   ;
++-------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+--------------+
+; Compilation Hierarchy Node    ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                               ; Library Name ;
++-------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+--------------+
+; |Lab1                         ; 109 (0)     ; 34           ; 0          ; 33   ; 0            ; 75 (0)       ; 12 (0)            ; 22 (0)           ; 21 (0)          ; 0 (0)      ; |Lab1                                             ; work         ;
+;    |CLKDIV:divider|           ; 35 (35)     ; 16           ; 0          ; 0    ; 0            ; 19 (19)      ; 8 (8)             ; 8 (8)            ; 15 (15)         ; 0 (0)      ; |Lab1|CLKDIV:divider                              ; work         ;
+;    |CoinCounter:ccnt|         ; 31 (31)     ; 6            ; 0          ; 0    ; 0            ; 25 (25)      ; 0 (0)             ; 6 (6)            ; 6 (6)           ; 0 (0)      ; |Lab1|CoinCounter:ccnt                            ; work         ;
+;    |KP_top:kp|                ; 7 (1)       ; 2            ; 0          ; 0    ; 0            ; 5 (1)        ; 0 (0)             ; 2 (0)            ; 0 (0)           ; 0 (0)      ; |Lab1|KP_top:kp                                   ; work         ;
+;       |KP_Scan:sc|            ; 6 (6)       ; 2            ; 0          ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |Lab1|KP_top:kp|KP_Scan:sc                        ; work         ;
+;    |MultiplexedDisplay:lb|    ; 23 (0)      ; 2            ; 0          ; 0    ; 0            ; 21 (0)       ; 0 (0)             ; 2 (0)            ; 0 (0)           ; 0 (0)      ; |Lab1|MultiplexedDisplay:lb                       ; work         ;
+;       |BCD_7SEG:b|            ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Lab1|MultiplexedDisplay:lb|BCD_7SEG:b            ; work         ;
+;       |MUX4_1x4:m|            ; 12 (12)     ; 0            ; 0          ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Lab1|MultiplexedDisplay:lb|MUX4_1x4:m            ; work         ;
+;       |PRIORITY_N_COUNTER:pc| ; 4 (4)       ; 2            ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 2 (2)            ; 0 (0)           ; 0 (0)      ; |Lab1|MultiplexedDisplay:lb|PRIORITY_N_COUNTER:pc ; work         ;
+;    |coinSync:csync|           ; 8 (0)       ; 8            ; 0          ; 0    ; 0            ; 0 (0)        ; 4 (0)             ; 4 (0)            ; 0 (0)           ; 0 (0)      ; |Lab1|coinSync:csync                              ; work         ;
+;       |inputSync:udi|         ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Lab1|coinSync:csync|inputSync:udi                ; work         ;
+;       |inputSync:udo|         ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Lab1|coinSync:csync|inputSync:udo                ; work         ;
+;       |inputSync:un|          ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Lab1|coinSync:csync|inputSync:un                 ; work         ;
+;       |inputSync:uq|          ; 2 (2)       ; 2            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 1 (1)            ; 0 (0)           ; 0 (0)      ; |Lab1|coinSync:csync|inputSync:uq                 ; work         ;
+;    |coin_BCD:c_bcd|           ; 5 (5)       ; 0            ; 0          ; 0    ; 0            ; 5 (5)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |Lab1|coin_BCD:c_bcd                              ; work         ;
++-------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------+
+; State Machine - |Lab1|KP_top:kp|KP_Key_BCD:as|state            ;
++----------------+---------------+--------------+----------------+
+; Name           ; state.s_first ; state.s_back ; state.s_second ;
++----------------+---------------+--------------+----------------+
+; state.s_first  ; 0             ; 0            ; 0              ;
+; state.s_second ; 1             ; 0            ; 1              ;
+; state.s_back   ; 1             ; 1            ; 0              ;
++----------------+---------------+--------------+----------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------+
+; State Machine - |Lab1|KP_top:kp|KP_sMachine:stm|state                                   ;
++------------------+------------------+------------------+-----------------+--------------+
+; Name             ; state.s_DEBOUNCE ; state.s_RELEASED ; state.s_PRESSED ; state.s_SCAN ;
++------------------+------------------+------------------+-----------------+--------------+
+; state.s_SCAN     ; 0                ; 0                ; 0               ; 0            ;
+; state.s_PRESSED  ; 0                ; 0                ; 1               ; 1            ;
+; state.s_RELEASED ; 0                ; 1                ; 0               ; 1            ;
+; state.s_DEBOUNCE ; 1                ; 0                ; 0               ; 1            ;
++------------------+------------------+------------------+-----------------+--------------+
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++--------------------------------------------+---------------------------------------------+
+; Register name                              ; Reason for Removal                          ;
++--------------------------------------------+---------------------------------------------+
+; por                                        ; Stuck at VCC due to stuck port data_in      ;
+; rst                                        ; Stuck at GND due to stuck port data_in      ;
+; por_cnt[0..7]                              ; Stuck at GND due to stuck port clock_enable ;
+; KP_top:kp|KP_sMachine:stm|state~3          ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|state~4          ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|load             ; Lost fanout                                 ;
+; KP_top:kp|KP_Latch:lc|d_l[1..3,5..7]       ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|count[0,1]       ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|latch            ; Lost fanout                                 ;
+; KP_top:kp|KP_Key_BCD:as|state.s_second     ; Lost fanout                                 ;
+; KP_top:kp|KP_Key_BCD:as|state.s_back       ; Lost fanout                                 ;
+; KP_top:kp|KP_Key_BCD:as|state.s_first      ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|state.s_SCAN     ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|state.s_PRESSED  ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|state.s_RELEASED ; Lost fanout                                 ;
+; KP_top:kp|KP_sMachine:stm|state.s_DEBOUNCE ; Lost fanout                                 ;
+; Total Number of Removed Registers = 29     ;                                             ;
++--------------------------------------------+---------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                ;
++------------------------------+--------------------+----------------------------------------+
+; Register name                ; Reason for Removal ; Registers Removed due to This Register ;
++------------------------------+--------------------+----------------------------------------+
+; KP_top:kp|KP_Latch:lc|d_l[3] ; Lost Fanouts       ; KP_top:kp|KP_sMachine:stm|latch        ;
++------------------------------+--------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 34    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 4     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 4     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered                               ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; |Lab1|KP_top:kp|KP_sMachine:stm|count[0] ;                            ;
+; 16:1               ; 4 bits    ; 40 LEs        ; 8 LEs                ; 32 LEs                 ; |Lab1|CoinCounter:ccnt|coinCount[2]      ;                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------------------------------------+----------------------------+
+
+
++------------------------------------------------+
+; Source assignments for Top-level Entity: |Lab1 ;
++------------+---------+------+------------------+
+; Assignment ; Value   ; From ; To               ;
++------------+---------+------+------------------+
+; LOCATION   ; Pin_B13 ; -    ; K_I[3]           ;
+; LOCATION   ; Pin_B14 ; -    ; K_I[2]           ;
+; LOCATION   ; Pin_B15 ; -    ; K_I[1]           ;
+; LOCATION   ; Pin_B18 ; -    ; K_I[0]           ;
+; LOCATION   ; Pin_B12 ; -    ; K_O[3]           ;
+; LOCATION   ; Pin_B11 ; -    ; K_O[2]           ;
+; LOCATION   ; Pin_A10 ; -    ; K_O[1]           ;
+; LOCATION   ; Pin_B9  ; -    ; K_O[0]           ;
+; LOCATION   ; Pin_U13 ; -    ; LED_RIGHT[3]     ;
+; LOCATION   ; Pin_V13 ; -    ; LED_RIGHT[2]     ;
+; LOCATION   ; Pin_U12 ; -    ; LED_RIGHT[1]     ;
+; LOCATION   ; Pin_V12 ; -    ; LED_RIGHT[0]     ;
+; LOCATION   ; Pin_U4  ; -    ; LED_LEFT[3]      ;
+; LOCATION   ; Pin_V4  ; -    ; LED_LEFT[2]      ;
+; LOCATION   ; Pin_U5  ; -    ; LED_LEFT[1]      ;
+; LOCATION   ; Pin_V5  ; -    ; LED_LEFT[0]      ;
+; LOCATION   ; Pin_C9  ; -    ; SEG[6]           ;
+; LOCATION   ; Pin_C10 ; -    ; SEG[5]           ;
+; LOCATION   ; Pin_D10 ; -    ; SEG[4]           ;
+; LOCATION   ; Pin_C11 ; -    ; SEG[3]           ;
+; LOCATION   ; Pin_D11 ; -    ; SEG[2]           ;
+; LOCATION   ; Pin_C12 ; -    ; SEG[1]           ;
+; LOCATION   ; Pin_D12 ; -    ; SEG[0]           ;
+; LOCATION   ; Pin_H3  ; -    ; COM[2]           ;
+; LOCATION   ; Pin_F3  ; -    ; COM[1]           ;
+; LOCATION   ; Pin_C3  ; -    ; COM[0]           ;
+; LOCATION   ; Pin_J6  ; -    ; CLK              ;
+; LOCATION   ; Pin_U15 ; -    ; Nickel           ;
+; LOCATION   ; Pin_V15 ; -    ; Dime             ;
+; LOCATION   ; Pin_U14 ; -    ; Quarter          ;
+; LOCATION   ; Pin_V14 ; -    ; Dollar           ;
+; LOCATION   ; Pin_C4  ; -    ; DP               ;
+; LOCATION   ; Pin_B3  ; -    ; COM4             ;
++------------+---------+------+------------------+
+
+
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: KP_top:kp|KP_sMachine:stm ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; s_SCAN         ; 0     ; Signed Integer                                ;
+; s_PRESSED      ; 1     ; Signed Integer                                ;
+; s_RELEASED     ; 2     ; Signed Integer                                ;
+; s_DEBOUNCE     ; 3     ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: KP_top:kp|KP_Key_BCD:as ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; s_first        ; 0     ; Signed Integer                              ;
+; s_second       ; 1     ; Signed Integer                              ;
+; s_back         ; 2     ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "MultiplexedDisplay:lb|MUX4_1x4:m" ;
++--------+-------+----------+----------------------------------+
+; Port   ; Type  ; Severity ; Details                          ;
++--------+-------+----------+----------------------------------+
+; InputA ; Input ; Info     ; Stuck at GND                     ;
++--------+-------+----------+----------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "MultiplexedDisplay:lb|PRIORITY_N_COUNTER:pc"                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; OUTPUT[3] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "KP_top:kp|KP_Key_BCD:as"                                                                                                  ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                  ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+; Ascii ; Output ; Warning  ; Output or bidir port (6 bits) is wider than the port expression (5 bits) it drives; bit(s) "Ascii[5..5]" have no fanouts ;
++-------+--------+----------+--------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "KP_top:kp"                                                                                                              ;
++-------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                                                                ;
++-------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
+; BCD   ; Output ; Warning  ; Output or bidir port (5 bits) is wider than the port expression (2 bits) it drives; bit(s) "BCD[4..2]" have no fanouts ;
+; BCD   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                    ;
+; d_rdy ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                    ;
++-------+--------+----------+------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 32-bit Analysis & Synthesis
+    Info: Version 11.1 Build 216 11/23/2011 Service Pack 1 SJ Web Edition
+    Info: Processing started: Sat Jun 02 05:19:59 2012
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab1 -c Lab1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Warning (10463): Verilog HDL Declaration warning at inputSync.v(10): "do" is SystemVerilog-2005 keyword
+Info (12021): Found 2 design units, including 2 entities, in source file inputsync.v
+    Info (12023): Found entity 1: coinSync
+    Info (12023): Found entity 2: inputSync
+Info (12021): Found 1 design units, including 1 entities, in source file kp/kp_top.v
+    Info (12023): Found entity 1: KP_top
+Info (12021): Found 1 design units, including 1 entities, in source file kp/kp_smachine.v
+    Info (12023): Found entity 1: KP_sMachine
+Info (12021): Found 1 design units, including 1 entities, in source file kp/kp_scan.v
+    Info (12023): Found entity 1: KP_Scan
+Info (12021): Found 1 design units, including 1 entities, in source file kp/kp_read.v
+    Info (12023): Found entity 1: KP_Read
+Info (12021): Found 1 design units, including 1 entities, in source file kp/kp_latch.v
+    Info (12023): Found entity 1: KP_Latch
+Info (12021): Found 1 design units, including 1 entities, in source file kp/kp_key_bcd.v
+    Info (12023): Found entity 1: KP_Key_BCD
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexeddisplay/priority_n_counter.v
+    Info (12023): Found entity 1: PRIORITY_N_COUNTER
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexeddisplay/mux4_1x4.v
+    Info (12023): Found entity 1: MUX4_1x4
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexeddisplay/mutiplexeddisplay.v
+    Info (12023): Found entity 1: MultiplexedDisplay
+Info (12021): Found 1 design units, including 1 entities, in source file multiplexeddisplay/bcd_7seg.v
+    Info (12023): Found entity 1: BCD_7SEG
+Info (12021): Found 2 design units, including 2 entities, in source file lab1.v
+    Info (12023): Found entity 1: Lab1
+    Info (12023): Found entity 2: tristate
+Info (12021): Found 1 design units, including 1 entities, in source file data_latch.v
+    Info (12023): Found entity 1: DATA_LATCH
+Info (12021): Found 1 design units, including 1 entities, in source file coin_bcd.v
+    Info (12023): Found entity 1: coin_BCD
+Info (12021): Found 1 design units, including 1 entities, in source file coincounter.v
+    Info (12023): Found entity 1: CoinCounter
+Info (12021): Found 1 design units, including 1 entities, in source file clkdiv.v
+    Info (12023): Found entity 1: CLKDIV
+Warning (10236): Verilog HDL Implicit Net warning at Lab1.v(90): created implicit net for "second"
+Warning (10236): Verilog HDL Implicit Net warning at Lab1.v(90): created implicit net for "key"
+Info (12127): Elaborating entity "Lab1" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at Lab1.v(81): truncated value with size 32 to match size of target (8)
+Warning (10034): Output port "LED_RIGHT" at Lab1.v(40) has no driver
+Warning (10034): Output port "LED_LEFT" at Lab1.v(41) has no driver
+Info (12128): Elaborating entity "CLKDIV" for hierarchy "CLKDIV:divider"
+Info (12128): Elaborating entity "KP_top" for hierarchy "KP_top:kp"
+Info (12128): Elaborating entity "KP_Scan" for hierarchy "KP_top:kp|KP_Scan:sc"
+Info (12128): Elaborating entity "KP_sMachine" for hierarchy "KP_top:kp|KP_sMachine:stm"
+Warning (10230): Verilog HDL assignment warning at KP_sMachine.v(49): truncated value with size 32 to match size of target (2)
+Info (12128): Elaborating entity "KP_Latch" for hierarchy "KP_top:kp|KP_Latch:lc"
+Info (12128): Elaborating entity "KP_Key_BCD" for hierarchy "KP_top:kp|KP_Key_BCD:as"
+Info (12128): Elaborating entity "tristate" for hierarchy "tristate:ts"
+Info (12128): Elaborating entity "coinSync" for hierarchy "coinSync:csync"
+Info (12128): Elaborating entity "inputSync" for hierarchy "coinSync:csync|inputSync:un"
+Info (12128): Elaborating entity "CoinCounter" for hierarchy "CoinCounter:ccnt"
+Warning (10230): Verilog HDL assignment warning at CoinCounter.v(24): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at CoinCounter.v(25): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at CoinCounter.v(26): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at CoinCounter.v(27): truncated value with size 32 to match size of target (6)
+Warning (10230): Verilog HDL assignment warning at CoinCounter.v(28): truncated value with size 32 to match size of target (6)
+Info (12128): Elaborating entity "coin_BCD" for hierarchy "coin_BCD:c_bcd"
+Warning (10850): Verilog HDL warning at coin_BCD.v(12): number of words (63) in memory file does not match the number of elements in the address range [0:63]
+Warning (10030): Net "nickelrom.data_a" at coin_BCD.v(10) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "nickelrom.waddr_a" at coin_BCD.v(10) has no driver or initial value, using a default initial value '0'
+Warning (10030): Net "nickelrom.we_a" at coin_BCD.v(10) has no driver or initial value, using a default initial value '0'
+Info (12128): Elaborating entity "MultiplexedDisplay" for hierarchy "MultiplexedDisplay:lb"
+Info (12128): Elaborating entity "PRIORITY_N_COUNTER" for hierarchy "MultiplexedDisplay:lb|PRIORITY_N_COUNTER:pc"
+Info (12128): Elaborating entity "MUX4_1x4" for hierarchy "MultiplexedDisplay:lb|MUX4_1x4:m"
+Info (12128): Elaborating entity "BCD_7SEG" for hierarchy "MultiplexedDisplay:lb|BCD_7SEG:b"
+Info (13014): Ignored 9 buffer(s)
+    Info (13019): Ignored 9 SOFT buffer(s)
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/db/Lab1.ram0_coin_BCD_7bb7ec3f.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LED_RIGHT[0]" is stuck at GND
+    Warning (13410): Pin "LED_RIGHT[1]" is stuck at GND
+    Warning (13410): Pin "LED_RIGHT[2]" is stuck at GND
+    Warning (13410): Pin "LED_RIGHT[3]" is stuck at GND
+    Warning (13410): Pin "LED_LEFT[0]" is stuck at GND
+    Warning (13410): Pin "LED_LEFT[1]" is stuck at GND
+    Warning (13410): Pin "LED_LEFT[2]" is stuck at GND
+    Warning (13410): Pin "LED_LEFT[3]" is stuck at GND
+    Warning (13410): Pin "DP" is stuck at GND
+    Warning (13410): Pin "COM4" is stuck at VCC
+Info (17049): 19 registers lost all their fanouts during netlist optimizations. The first 19 are displayed below.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|state~3" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|state~4" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|load" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Latch:lc|d_l[3]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Latch:lc|d_l[2]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Latch:lc|d_l[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Latch:lc|d_l[7]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Latch:lc|d_l[6]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Latch:lc|d_l[5]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|count[0]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|count[1]" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|latch" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Key_BCD:as|state.s_second" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Key_BCD:as|state.s_back" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_Key_BCD:as|state.s_first" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|state.s_SCAN" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|state.s_PRESSED" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|state.s_RELEASED" lost all its fanouts during netlist optimizations.
+    Info (17050): Register "KP_top:kp|KP_sMachine:stm|state.s_DEBOUNCE" lost all its fanouts during netlist optimizations.
+Info (21057): Implemented 142 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 9 input pins
+    Info (21059): Implemented 20 output pins
+    Info (21060): Implemented 4 bidirectional pins
+    Info (21061): Implemented 109 logic cells
+Info (144001): Generated suppressed messages file C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/Lab1.map.smsg
+Info: Quartus II 32-bit Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 281 megabytes
+    Info: Processing ended: Sat Jun 02 05:20:00 2012
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/Lab1.map.smsg.
+
+

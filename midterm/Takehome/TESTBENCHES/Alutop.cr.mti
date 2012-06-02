@@ -1,11 +1,4 @@
-C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v {1 {vlog -work work C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v
-Model Technology ModelSim PE Student Edition vlog 10.1b Compiler 2012.04 Apr 27 2012
--- Compiling module test_alu_top_level
-
-Top level modules:
-	test_alu_top_level
-
-} {} {}} C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v {1 {vlog -work work C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v
+C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v {1 {vlog -work work C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/Alu.v
 Model Technology ModelSim PE Student Edition vlog 10.1b Compiler 2012.04 Apr 27 2012
 -- Compiling module Alu
 -- Compiling module Math
@@ -14,5 +7,12 @@ Model Technology ModelSim PE Student Edition vlog 10.1b Compiler 2012.04 Apr 27 
 
 Top level modules:
 	Alu
+
+} {} {}} C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v {1 {vlog -work work C:/SymbolicSource/QuartusProjects/APLD_CST_351/midterm/Takehome/TESTBENCHES/test_alu_top_level.v
+Model Technology ModelSim PE Student Edition vlog 10.1b Compiler 2012.04 Apr 27 2012
+-- Compiling module test_alu_top_level
+
+Top level modules:
+	test_alu_top_level
 
 } {} {}}

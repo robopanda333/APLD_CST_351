@@ -1,0 +1,42 @@
+
+
+
+
+module coinSync(
+input	clk,
+input	n,
+input	di,
+input	q,
+input	do,
+output	n_s,
+output	di_s,
+output	q_s,
+output	do_s
+);
+inputSync  n(clk,  n,  n_s);
+inputSync di(clk, di, di_s);
+inputSync  q(clk,  q,  q_s);
+inputSync do(clk, do, do_s);
+endmodule
+
+
+//posedge
+//async signal trigers high for 1 clk on negedge of async
+module inputSync(
+input clk,
+input async,
+output sync
+);
+reg	clr,
+	t1,
+
+always@ (negedge async or posedge sync)
+	if (clr)
+		t1 = 0;
+	else
+		t1 = 1;
+
+always@ (posedge clk)
+	sync = t1;
+
+endmodule

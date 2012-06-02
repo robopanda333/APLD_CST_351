@@ -1,0 +1,11 @@
+Fitter Status : Successful - Sat Jun 02 05:20:03 2012
+Quartus II 32-bit Version : 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition
+Revision Name : Lab1
+Top-level Entity Name : Lab1
+Family : MAX II
+Device : EPM2210F324C3
+Timing Models : Final
+Total logic elements : 101 / 2,210 ( 5 % )
+Total pins : 33 / 272 ( 12 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

@@ -1,0 +1,13 @@
+
+State Machine - |Lab1|KP_top:kp|KP_Key_BCD:as|state
+Name state.s_first state.s_back state.s_second 
+state.s_first 0 0 0 
+state.s_second 1 0 1 
+state.s_back 1 1 0 
+
+State Machine - |Lab1|KP_top:kp|KP_sMachine:stm|state
+Name state.s_DEBOUNCE state.s_RELEASED state.s_PRESSED state.s_SCAN 
+state.s_SCAN 0 0 0 0 
+state.s_PRESSED 0 0 1 1 
+state.s_RELEASED 0 1 0 1 
+state.s_DEBOUNCE 1 0 0 1 

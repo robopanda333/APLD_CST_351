@@ -15,7 +15,7 @@
 //The program will then display the corresponding character by decoding it and
 //displaying it on the multiplexed seven segment display from the PLD class.
 //Each BCD character (0-9) will be displayed in the least significant digit and
-//shifted over when a new key is entered. If the ¬ÅgCLEAR¬Åh key is hit it will
+//shifted over when a new key is entered. If the ÅgCLEARÅh key is hit it will
 //cause the display to clear.  The other key on the keypad will just cause the
 //display to hold the present data. The keypad switches have a 3 msec bounce
 //therefore the clock frequency is 1 Khz to minimize the switch bounce.
@@ -60,13 +60,13 @@ wire	[5:0]	coinCount;
 
 
 reg por;
-reg [7:0] por_cnt;
+reg [5:0] por_cnt;
 //simple power on reset
 always@(posedge CLK)
 begin
 if(por)
 	begin
-		por_cnt = por_cnt;
+		por_cnt = porcnt;
 		rst = 0;
 	end
 else
