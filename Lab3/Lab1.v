@@ -1,0 +1,80 @@
+//-----------------------------------------------------------------------------
+//University: OIT - CSET
+//Class: CST 231
+//Lab:Lab 1
+//Project: keypad controller
+//
+//Author: Kehnin Dyer
+//Date: 2012 04 15
+//Dependancies: none
+//-----------------------------------------------------------------------------
+//DISCRIPTION:
+//In this lab, you will be reading input from a keypad and display the corresponding
+//button pressed onto a seven segment display. You will be required to write a
+//Verilog program which will determine which key has been pressed on the key pad.
+//The program will then display the corresponding character by decoding it and
+//displaying it on the multiplexed seven segment display from the PLD class.
+//Each BCD character (0-9) will be displayed in the least significant digit and
+//shifted over when a new key is entered. If the ÅgCLEARÅh key is hit it will
+//cause the display to clear.  The other key on the keypad will just cause the
+//display to hold the present data. The keypad switches have a 3 msec bounce
+//therefore the clock frequency is 1 Khz to minimize the switch bounce.
+//
+//	  |		5		6		7		8
+//____|________________________________
+//	1 |		1		2		3		^
+//	2 |		4		5		6		V
+//	3 |		7		8		9		Sec
+//	4 |		CLR		0		HEL		ENT
+//-----------------------------------------------------------------------------
+
+module Lab1(
+(* chip_pin = "J6" *)								input			CLK,
+(* chip_pin = "B13, B14, B15, B18" *)				input	[3:0]	K_I,//8,7,6,5
+(* chip_pin = "B12, B11, A10, B9" *)				inout	[3:0]	K_O,//4,3,2,1
+(* chip_pin = "U13, V13, U12, V12" *)				output	[3:0]	LED_RIGHT,
+(* chip_pin = "U4,V4,U5,V5" *)						output	[3:0]	LED_LEFT,
+(* chip_pin = "C9, C10, D10, C11, D11, C12, D12" *)	output	[6:0]	SEG,
+(* chip_pin = "H3, F3, C3" *)			 			output	[2:0]	COM,
+(* chip_pin = "C4" *)								output			DP,
+(* chip_pin = "B3" *)								output			COM4
+);
+
+wire			key_ready,
+				CLK_1k;
+wire	[3:0]	Key,
+				A, B, C,
+				K_O_tmp;
+
+CLKDIV divider(CLK,CLK_1k);
+
+KP_top kp(CLK_1k, K_I, K_O_tmp, {second, key}, key_ready);
+tristate ts(K_O_tmp,K_O);
+
+
+coin_BCD c_bcd(coinCount, C, B, A);
+MultiplexedDisplay lb(CLK_1k, A, B, C, SEG, COM);
+
+
+
+ //make these static
+assign DP = 0;
+assign COM4 = 1;
+//for debuging
+assign LED_LEFT = K_I;
+assign LED_RIGHT = K_O_tmp;
+endmodule
+
+
+
+
+
+module tristate(
+input [3:0] in,
+inout [3:0] out
+);
+	assign out[0] = in[0]?1'bZ:1'b0;
+	assign out[1] = in[1]?1'bZ:1'b0;
+	assign out[2] = in[2]?1'bZ:1'b0;
+	assign out[3] = in[3]?1'bZ:1'b0;
+endmodule

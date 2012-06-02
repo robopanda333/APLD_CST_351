@@ -1,4 +1,6 @@
-
+//kehnin dyer
+//cst 351
+//problem 4
 
 module dbounce(
 input wire clk,
