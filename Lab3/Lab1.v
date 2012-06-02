@@ -52,17 +52,13 @@ KP_top kp(CLK_1k, K_I, K_O_tmp, {second, key}, key_ready);
 tristate ts(K_O_tmp,K_O);
 
 
+
 coin_BCD c_bcd(coinCount, C, B, A);
 MultiplexedDisplay lb(CLK_1k, A, B, C, SEG, COM);
-
-
 
  //make these static
 assign DP = 0;
 assign COM4 = 1;
-//for debuging
-assign LED_LEFT = K_I;
-assign LED_RIGHT = K_O_tmp;
 endmodule
 
 
