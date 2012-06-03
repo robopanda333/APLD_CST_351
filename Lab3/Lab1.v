@@ -34,8 +34,7 @@ poweronreset r(CLK, hw_RESET, RESET);
 KP_top kp(CLK_1k, K_I, K_O_tmp, {second, key}, key_ready);
 tristate ts(K_O_tmp,K_O);
 
-coinSync csync(CLK_1k, Nickel, Dime, Quarter, Dollar, n_syn, di_syn, q_syn, do_syn);
-CoinCounter	ccnt(CLK_1k, RESET, n_syn, di_syn, q_syn, do_syn, down, coinCount);
+mainController mC(CLK_1k, RESET, key, key_ready, {Nickel, Dime, Quarter, Dollar}, coinCount, itemNumber, display_price, display_item);
 
 coin_BCD c_bcd(coinCount, C, B, A);
 MultiplexedDisplay lb(CLK_1k, A, B, C, SEG, COM);
@@ -74,7 +73,7 @@ reg done;
 reg [15:0] sw_reset_counter;
 //simple power on reset
 assign t_reset = sw_reset|hw_reset;
-always@(posedge CLK)
+always@(posedge clk)
 begin
 if(done)
 	begin

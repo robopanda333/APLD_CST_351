@@ -35,7 +35,7 @@ always@ (negedge async or posedge sync)
 	else
 		t1 = 1;
 
-always@ (posedge clk)
+always@ (negedge clk)
 	sync = t1;
 
 endmodule

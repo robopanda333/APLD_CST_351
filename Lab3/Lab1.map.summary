@@ -1,9 +1,5 @@
-Analysis & Synthesis Status : Successful - Sat Jun 02 05:20:00 2012
-Quartus II 32-bit Version : 11.1 Build 216 11/23/2011 SP 1 SJ Web Edition
+Analysis & Synthesis Status : Failed - Sat Jun 02 22:04:58 2012
+Quartus II Version : 11.0 Build 208 07/03/2011 SP 1 SJ Full Version
 Revision Name : Lab1
 Top-level Entity Name : Lab1
 Family : MAX II
-Total logic elements : 109
-Total pins : 33
-Total virtual pins : 0
-UFM blocks : 0 / 1 ( 0 % )

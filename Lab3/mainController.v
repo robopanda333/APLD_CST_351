@@ -1,12 +1,13 @@
 
 
 module mainController(
-input		clk,
-input		reset,
-input [3:0]	key,
-input		key_ready,
-input [5:0]	coinCount,
-
+input				clk,
+input				reset,
+input		[3:0]	key,
+input				key_ready,
+input		[3:0]	CoinInputs, //nickel dime quarter
+output	reg	[5:0]	coinCount,
+output	reg		itemNumber
 );
 
 wire return;
@@ -19,6 +20,7 @@ wire	[]	dispence_itemKey;
 wire		dispence_fail,
 			dispence_succeed,
 			dispence_enable;
+
 Dispence ud(clk, reset, )
 
 
@@ -29,7 +31,7 @@ wire			n_syn,
 				down;
 
 coinSync csync(clk, Nickel, Dime, Quarter, Dollar, n_syn, di_syn, q_syn, do_syn);
-CoinCounter	ccnt(clk, RESET, n_syn, di_syn, q_syn, do_syn, down, coinCount);
+CoinCounter	ccnt(clk, RESET, n_syn, di_syn, q_syn, do_syn, down_5, down_10, down_25, coinCount);
 
 
 
