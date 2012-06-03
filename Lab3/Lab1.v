@@ -1,35 +1,7 @@
-//-----------------------------------------------------------------------------
-//University: OIT - CSET
-//Class: CST 231
-//Lab:Lab 1
-//Project: keypad controller
-//
-//Author: Kehnin Dyer
-//Date: 2012 04 15
-//Dependancies: none
-//-----------------------------------------------------------------------------
-//DISCRIPTION:
-//In this lab, you will be reading input from a keypad and display the corresponding
-//button pressed onto a seven segment display. You will be required to write a
-//Verilog program which will determine which key has been pressed on the key pad.
-//The program will then display the corresponding character by decoding it and
-//displaying it on the multiplexed seven segment display from the PLD class.
-//Each BCD character (0-9) will be displayed in the least significant digit and
-//shifted over when a new key is entered. If the gCLEARh key is hit it will
-//cause the display to clear.  The other key on the keypad will just cause the
-//display to hold the present data. The keypad switches have a 3 msec bounce
-//therefore the clock frequency is 1 Khz to minimize the switch bounce.
-//
-//	  |		5		6		7		8
-//____|________________________________
-//	1 |		1		2		3		^
-//	2 |		4		5		6		V
-//	3 |		7		8		9		Sec
-//	4 |		CLR		0		HEL		ENT
-//-----------------------------------------------------------------------------
 
 module Lab1(
 (* chip_pin = "J6" *)								input			CLK,
+(* chip_pin = ""   *)								input			hw_RESET,
 (* chip_pin = "B13, B14, B15, B18" *)				input	[3:0]	K_I,//8,7,6,5
 (* chip_pin = "B12, B11, A10, B9" *)				inout	[3:0]	K_O,//4,3,2,1
 (* chip_pin = "U15" *)								input			Nickel,
@@ -45,53 +17,25 @@ module Lab1(
 (* chip_pin = "B3" *)								output			COM4
 );
 
-wire			n_syn,
-				di_syn,
-				q_syn,
-				do_syn,
-				down,
-				key_ready,
-				CLK_1k;
+wire				key_ready,
+				CLK_1k,
+				RESET;
 reg				rst;
 wire	[3:0]	Key,
 				A, B, C,
 				K_O_tmp;
 wire	[5:0]	coinCount;
 
-
-reg por;
-reg [7:0] por_cnt;
-//simple power on reset
-always@(posedge CLK)
-begin
-if(por)
-	begin
-		por_cnt = por_cnt;
-		rst = 0;
-	end
-else
-	if(por_cnt == 37) //some arbitrary non 0 number
-	begin
-		por_cnt = 38;
-		por = 1;
-		rst = 1;
-	end
-	else
-	begin
-		por_cnt = por_cnt + 1;
-		por = 0;
-		rst = 0;
-	end
-end
-
-
 CLKDIV divider(CLK,CLK_1k);
+poweronreset r(CLK, hw_RESET, RESET);
+
+
 
 KP_top kp(CLK_1k, K_I, K_O_tmp, {second, key}, key_ready);
 tristate ts(K_O_tmp,K_O);
 
 coinSync csync(CLK_1k, Nickel, Dime, Quarter, Dollar, n_syn, di_syn, q_syn, do_syn);
-CoinCounter	ccnt(CLK_1k, rst, n_syn, di_syn, q_syn, do_syn, down, coinCount);
+CoinCounter	ccnt(CLK_1k, RESET, n_syn, di_syn, q_syn, do_syn, down, coinCount);
 
 coin_BCD c_bcd(coinCount, C, B, A);
 MultiplexedDisplay lb(CLK_1k, A, B, C, SEG, COM);
@@ -104,7 +48,7 @@ endmodule
 
 
 
-
+//just to get this stuff out of the top level
 module tristate(
 input [3:0] in,
 inout [3:0] out
@@ -113,4 +57,42 @@ inout [3:0] out
 	assign out[1] = in[1]?1'bZ:1'b0;
 	assign out[2] = in[2]?1'bZ:1'b0;
 	assign out[3] = in[3]?1'bZ:1'b0;
+endmodule
+
+
+
+//i am  adding this because my counter was starting at some non-zero value
+//and it really shouldn't start with money inserted.
+module poweronreset(
+input clk,
+input hw_reset,
+output t_reset
+);
+
+reg sw_reset;
+reg done;
+reg [15:0] sw_reset_counter;
+//simple power on reset
+assign t_reset = sw_reset|hw_reset;
+always@(posedge CLK)
+begin
+if(done)
+	begin
+		sw_reset_counter = 0;
+		sw_reset = 0;
+	end
+else
+	if(sw_reset_counter <= 16'hAF2A) //some arbitrary non 0 number, it is very not likely to start at this value.
+	begin
+		sw_reset_counter = 0;
+		done = 1;
+		sw_reset = 1;
+	end
+	else
+	begin
+		sw_reset_counter = sw_reset_counter + 1;
+		done = 0;
+		sw_reset = 0;
+	end
+end
 endmodule
