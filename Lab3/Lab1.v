@@ -1,7 +1,7 @@
 
 module Lab1(
 (* chip_pin = "J6" *)								input			CLK,
-(* chip_pin = ""   *)								input			hw_RESET,
+(* chip_pin = "L17"   *)								input			hw_RESET,
 (* chip_pin = "B13, B14, B15, B18" *)				input	[3:0]	K_I,//8,7,6,5
 (* chip_pin = "B12, B11, A10, B9" *)				inout	[3:0]	K_O,//4,3,2,1
 (* chip_pin = "U15" *)								input			Nickel,
@@ -34,7 +34,7 @@ poweronreset r(CLK, hw_RESET, RESET);
 KP_top kp(CLK_1k, K_I, K_O_tmp, {second, key}, key_ready);
 tristate ts(K_O_tmp,K_O);
 
-mainController mC(CLK_1k, RESET, key, key_ready, {Nickel, Dime, Quarter, Dollar}, coinCount, itemNumber, display_price, display_item);
+mainController mC(CLK_1k, RESET, key, key_ready, {Nickel, Dime, Quarter, Dollar}, coinCount, itemNumber);//, display_price, display_item);
 
 coin_BCD c_bcd(coinCount, C, B, A);
 MultiplexedDisplay lb(CLK_1k, A, B, C, SEG, COM);
