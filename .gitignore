@@ -17,3 +17,10 @@
 *.bak
 */incremental_db/*
 *_assignment_defaults.qdf
+*rpt
+*.pin
+*.summary
+*.done
+*.jdi
+*.pof
+*.qsf
