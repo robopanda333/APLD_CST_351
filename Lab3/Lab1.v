@@ -1,7 +1,7 @@
 
 module Lab1(
 (* chip_pin = "J6" *)								input			CLK,
-(* chip_pin = "L17"   *)								input			hw_RESET,
+//(* chip_pin = "L17"   *)								input			hw_RESET,
 (* chip_pin = "B13, B14, B15, B18" *)				input	[3:0]	K_I,//8,7,6,5
 (* chip_pin = "B12, B11, A10, B9" *)				inout	[3:0]	K_O,//4,3,2,1
 (* chip_pin = "U15" *)								input			Nickel,
@@ -17,6 +17,7 @@ module Lab1(
 (* chip_pin = "B3" *)								output			COM4
 );
 
+wire hw_RESET = 0;
 wire				key_ready,
 				CLK_1k,
 				RESET;

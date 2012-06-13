@@ -28,7 +28,7 @@ input async,
 output reg sync
 );
 reg	t1;
-
+reg   [1:0] t;
 always@ (negedge async or posedge sync)
 	if (sync)
 		t1 = 0;
@@ -36,6 +36,8 @@ always@ (negedge async or posedge sync)
 		t1 = 1;
 
 always@ (negedge clk)
-	sync = t1;
-
+	begin
+		t = {t[0], t1};
+		sync = &t;
+	end
 endmodule

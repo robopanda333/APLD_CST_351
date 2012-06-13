@@ -11,7 +11,7 @@ output	reg		itemNumber
 );
 
 wire return;
-assign return = (&key) && key_ready;
+assign return = (!key) && key_ready;
 parameter	s_Idle		= 5'h00, //inserting coins, wait for
 			s_Dispence	= 5'h02, //turn on dispence state machine, either go to idle, or coin return
 			s_Return	= 5'h04;  //return remaining coins
