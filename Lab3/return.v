@@ -1,6 +1,6 @@
 
 
-module return(
+module c_return(
 input			clk,
 input	[5:0]	coinCount,
 input			en,

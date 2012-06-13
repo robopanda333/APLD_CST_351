@@ -17,12 +17,14 @@ module Lab1(
 (* chip_pin = "B3" *)								output			COM4
 );
 
-wire hw_RESET = 0;
+wire hw_RESET;
+assign hw_RESET = 0;
+wire second;
 wire				key_ready,
 				CLK_1k,
 				RESET;
 reg				rst;
-wire	[3:0]	Key,
+wire	[3:0]	key,
 				A, B, C,
 				K_O_tmp;
 wire	[5:0]	coinCount;

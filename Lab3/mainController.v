@@ -10,8 +10,8 @@ output			[5:0]	coinCount,
 output	reg		itemNumber
 );
 
-wire return;
-assign return = (!key) && key_ready;
+wire creturn;
+assign creturn = (!key) && key_ready;
 parameter	s_Idle		= 5'h00, //inserting coins, wait for
 			s_Dispence	= 5'h02, //turn on dispence state machine, either go to idle, or coin return
 			s_Return	= 5'h04;  //return remaining coins
@@ -24,7 +24,7 @@ reg				dis_en;
 wire			dis_down_5, dis_down_10, dis_down_25;
 
 
-Dispence ud(clk, reset, dis_en, key, key_ready, coinCount, dis_itemKey, dis_done, dis_failed, dis_led,
+Dispence ud(clk, reset, dis_en, key, key_ready, coinCount, dis_itemKey, dis_done, dis_fail, dis_led,
 			dis_down_5, dis_down_10, dis_down_25);
 
 wire			n_syn,
@@ -41,14 +41,14 @@ CoinCounter	ccnt(clk, reset, n_syn, di_syn, q_syn, do_syn, down_5, down_10, down
 reg		ret_en;
 wire	ret_done;
 wire	ret_down_5, ret_down_10, ret_down_25;
-return ret(clk, counCount, ret_en, ret_done, ret_down_5, ret_down_10, ret_down_25);
+c_return ret(clk, coinCount, ret_en, ret_done, ret_down_5, ret_down_10, ret_down_25);
 
 
 reg		[2:0]	state;
 
 always@ (posedge clk or posedge reset)
 begin
-	casex({reset, return, state})
+	casex({reset, creturn, state})
 	5'b1xxxx:
 		state = s_Idle;
 	5'b01xxx:
@@ -59,7 +59,7 @@ begin
 		else
 			state = state;
 	s_Dispence:
-		case({dis_failed, dis_done})
+		case({dis_fail, dis_done})
 		2'b1x:  state = s_Idle;
 		2'b01:  state = s_Return;
 		default:state = state;
@@ -74,7 +74,7 @@ end
 
 always@ (*)
 begin
-	casex({reset, return, state})
+	casex({reset, creturn, state})
 	5'b1xxxx:
 	begin
 		dis_en = 0;

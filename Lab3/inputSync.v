@@ -7,16 +7,16 @@ input	clk,
 input	n,
 input	di,
 input	q,
-input	do,
+input	dol,
 output	n_s,
 output	di_s,
 output	q_s,
-output	do_s
+output	dol_s
 );
 inputSync  un(clk,  n,  n_s);
 inputSync udi(clk, di, di_s);
 inputSync  uq(clk,  q,  q_s);
-inputSync udo(clk, do, do_s);
+inputSync udo(clk, dol, dol_s);
 endmodule
 
 
