@@ -109,7 +109,7 @@ begin
 case(state)
 	s_idle:
 	begin
-		itemCode    = 0;
+		itemCode    = itemCode;
 		done        = 0;
 		failed      = 0;
 		dispencing  = 0;

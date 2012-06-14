@@ -19,21 +19,18 @@ output reg CLK_1k
 );
 
 reg[14:0] count;
-wire test;
-
-assign en = (count >= 25000);
 
 always@(posedge CLK)
 begin
-	if(en)
+	if(count == 25000)
 		count = 0;
 	else
 		count = count + 15'd1;
 end
 
-always@(posedge CLK)
+always@(negedge CLK)
 begin
-	if(en)
+	if(count == 25000)
 		CLK_1k = ~CLK_1k;
 	else
 		CLK_1k = CLK_1k;

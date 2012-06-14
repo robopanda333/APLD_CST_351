@@ -12,9 +12,10 @@ assign leds[1] = !(item==4'h2 && dispencing);
 assign leds[2] = !(item==4'h3 && dispencing);
 assign leds[3] = !(item==4'h4 && dispencing);
 assign leds[4] = 1;
-Blink five(clk, down_5, leds[5]);
-Blink ten(clk, down_10, leds[6]);
-Blink twentyfive(clk, down_25, leds[7]);
+
+Blink five(clk, down_5 && ~down_10 && ~down_25, leds[5]);
+Blink ten(clk, down_5 && down_10 && ~down_25, leds[6]);
+Blink twentyfive(clk, down_5 && down_10 && down_25, leds[7]);
 
 endmodule
 
@@ -28,8 +29,8 @@ output reg LED
 parameter 	count = 1,
 				idle  = 0;
 reg  state;
-parameter secondcount = 2000;
-parameter halftime = 1000;
+parameter secondcount = 1000;
+parameter halftime = 500;
 reg [10:0] counter;
 
 always@ (posedge clk)
