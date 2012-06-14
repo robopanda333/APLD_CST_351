@@ -32,12 +32,15 @@ wire	[5:0]	coinCount;
 CLKDIV divider(CLK,CLK_1k);
 poweronreset r(CLK, hw_RESET, RESET);
 
-
+reg [3:0] counter;
+always@(posedge key_ready)
+	counter = counter + 1;
+//assign {LED_LEFT, LED_RIGHT} = ~{coinCount};
 
 KP_top kp(CLK_1k, K_I, K_O_tmp, {second, key}, key_ready);
 tristate ts(K_O_tmp,K_O);
 
-mainController mC(CLK_1k, RESET, key, key_ready, {Nickel, Dime, Quarter, Dollar}, coinCount, itemNumber);//, display_price, display_item);
+mainController mC(CLK_1k, RESET, key, key_ready, {Nickel, Dime, Quarter, Dollar}, coinCount, {LED_LEFT, LED_RIGHT});//, itemNumber);//, display_price, display_item);
 
 coin_BCD c_bcd(coinCount, C, B, A);
 MultiplexedDisplay lb(CLK_1k, A, B, C, SEG, COM);
@@ -92,7 +95,7 @@ else
 	end
 	else
 	begin
-		sw_reset_counter = sw_reset_counter + 1;
+		sw_reset_counter = sw_reset_counter + 16'b1;
 		done = 0;
 		sw_reset = 0;
 	end

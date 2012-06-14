@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EPM2210F324) Path("C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/") File("Lab1.pof") MfrSpec(OpMask(3) SEC_Device(EPM2210F324) Child_OpMask(2 3 3));
+		Device PartName(EPM2210F324) Path("C:/altera/11.1sp1/QuartusProjects/APLD_CST_351/Lab3/") File("Lab1.pof") MfrSpec(OpMask(7) SEC_Device(EPM2210F324) Child_OpMask(2 7 7));
 
 ChainEnd;
 

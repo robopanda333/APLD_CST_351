@@ -46,7 +46,7 @@ begin
 			end
 			else
 			begin
-				count = count + 1;
+				count = count + 2'b1;
 				state = state;
 			end
 		end			

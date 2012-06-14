@@ -17,7 +17,7 @@ module KP_Key_BCD(
 input				clk,
 input				valid,
 input		[3:0]	d,
-output	reg	[5:0]	Ascii,
+output	reg	[4:0]	Ascii,
 output	reg			Ascii_valid
 );
 

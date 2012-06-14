@@ -16,8 +16,8 @@ parameter	s_idle = 0,
 			s_done = 3;
 reg [1:0] state;
 
-parameter waitVal = 999;
-reg [9:0] waitCount;
+parameter waitVal = 2000;
+reg [10:0] waitCount;
 
 
 always@ (negedge clk)
@@ -64,8 +64,8 @@ begin
 	end
 	s_wait:
 	begin
-		waitCount = waitCount+1;
-		{down_5, down_10, down_25} = 0;
+		waitCount = waitCount + 11'h1;
+		{down_5, down_10, down_25} = 3'h0;
 		done = 0;
 	end
 	s_done:

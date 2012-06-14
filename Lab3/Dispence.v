@@ -10,11 +10,12 @@ output	reg[3:0]	itemCode,
 output	reg		done,
 output	reg		failed,
 output	reg		dispencing,
-output	reg		down_5,
-output	reg		down_10,
-output	reg		down_25
+output			down_5Out,
+output			down_10Out,
+output			down_25Out
 );
-
+reg down_5, down_10, down_25;
+assign {down_5Out, down_10Out,down_25Out} = {down_5, down_10, down_25};
 parameter	s_idle     = 0,
 			s_1stKey   = 1,
 			s_2ndKey   = 2,
@@ -24,166 +25,194 @@ parameter	s_idle     = 0,
 			s_done     = 6;
 reg	[2:0]	state;
 reg	[5:0]	costCounter;
-reg	[3:0]	key1,
-			key2;
 
-parameter secondcount = 999;
-reg [9:0] secondtimer;
+parameter secondcount = 2000;
+reg [10:0] secondtimer;
 
+/*
 reg	[5:0] itemCost [0:8];
+//reg [3:0] itemIndex [0:255];
 initial
+begin
+//	$readmemh("itemindex.rom", itemIndex);
 	$readmemh("itemcost.rom", itemCost);
+end
+*/
 
-reg [3:0] itemIndex [0:255];//we can support every item!
-initial
-	$readmemh("itemindex.rom", itemIndex);
-
-always@(negedge clk or posedge reset)
+	
+always@(posedge clk or posedge reset)
 begin
 	if(reset)
+	begin
+		secondtimer = 0;
 		state = s_idle;
+	end
 	else if(!enable)
+	begin
+		secondtimer = 0;
 		state = s_idle;
+	end
 	else
 	case(state)
 	s_idle:
 	begin
-		itemCode    = itemIndex[{key1, key2}];
-		done        = 0;
-		failed      = 0;
-		key1        = 0;
-		key2        = 0;
 		secondtimer = 0;
-		dispencing  = 0;
+		//costCounter = 0;
 		if(enable)
-			state   = s_1stKey;
+			state = s_decode;
 		else
 			state   = state;
-	end
-	s_1stKey:
-	begin
-		itemCode    = itemIndex[{key1, key2}];
-		done        = 0;
-		key2        = 0;
-		secondtimer = 0;
-		dispencing  = 0;
-		if(key_rdy)
-		begin
-			state   = s_2ndKey;
-			key1    = key_code;
-		end
-		else
-		begin
-			state   = state;
-			key1    = key1;
-		end
-	end
-	s_2ndKey:
-	begin
-		itemCode    = itemIndex[{key1, key2}];
-		done        = 0;
-		failed      = 0;
-		key1        = key1;
-		secondtimer = 0;
-		dispencing  = 0;
-		if(key_rdy)
-		begin
-			state   = s_2ndKey;
-			key2    = key_code;
-		end
-		else
-		begin
-			state   = state;
-			key2    = key2;
-		end
 	end
 	s_decode:
-	begin//store these values for the last time!
-		itemCode    =    itemIndex[{key1, key2}];
-		done        = 0;
-		failed      = !((itemCost[itemIndex[{key1, key2}]] <= coinVal)&&itemIndex[{key1, key2}]);
-		//if failed goes high the upper level state machine will set enable low killing this machine imediatlly.
-		key1        = key1;
-		key2        = key2;
+	begin
 		secondtimer = 0;
+		state = s_charge;
+	end
+	s_charge:
+	begin
+		secondtimer = 0;
+		if(costCounter > 0)
+		begin
+			state = state;
+		end
+		else
+			state = s_wait1sec;
+	end
+	s_wait1sec:
+	begin
+		if(secondtimer < secondcount)
+		begin
+			state = state;
+			secondtimer = secondtimer + 10'b1;
+		end
+		else
+		begin
+			secondtimer = secondtimer;
+			state = s_done;
+		end
+	end
+	s_done:
+	begin
+		state = state;
+		secondtimer = 0;
+	end
+	default:
+	begin
+		secondtimer = 0;
+		state       = s_idle;
+	end
+	endcase
+end
+
+always@(*)
+begin
+case(state)
+	s_idle:
+	begin
+		itemCode    = 0;
+		done        = 0;
+		failed      = 0;
 		dispencing  = 0;
-		state       = s_charge;
+		{down_5, down_10, down_25} = 0;
+	end
+	s_decode:
+	begin
+		done = 0;
+		dispencing = 0;
+		{down_5, down_10, down_25} = 0;
+		case(key_code)
+		4'h1:begin
+			itemCode = 1;
+			failed = coinVal < 6'd15;
+		end
+		4'h2:begin
+			itemCode = 1;
+			failed = coinVal < 6'd15;
+		end
+		4'h3:begin
+			itemCode = 2;
+			failed = coinVal < 6'd13;
+		end
+		4'h4:begin
+			itemCode = 2;
+			failed = coinVal < 6'd13;
+		end
+		4'h5:begin
+			itemCode = 3;
+			failed = coinVal < 6'd17;
+		end
+		4'h6:begin
+			itemCode = 3;
+			failed = coinVal < 6'd17;
+		end
+		4'h7:begin
+			itemCode = 4;
+			failed = coinVal < 6'd10;
+		end
+		4'h8:begin
+			itemCode = 4;
+			failed = coinVal < 6'd10;
+		end
+		default:begin
+			itemCode = 0;
+			failed = 1;
+		end
+		endcase
 	end
 	s_charge:
 	begin
 		itemCode    = itemCode;
 		done        = 0;
 		failed      = 0;
-		key1        = key1;
-		key2        = key2;
-		secondtimer = 0;
 		dispencing  = 1;
-		if(costCounter > 0)
-		begin
-			down_5  = costCounter >= 1;
-			down_10 = costCounter >= 2;
-			down_25 = costCounter >= 5;
-			state = s_wait1sec;
-		end
-		else
-			state = s_done;
+		down_5  = costCounter >= 1;
+		down_10 = costCounter >= 2;
+		down_25 = costCounter >= 5;
 	end
 	s_wait1sec:
 	begin
+	{down_5, down_10, down_25} = 0;
 		itemCode   = itemCode;
 		done       = 0;
 		failed     = 0;
-		key1       = key1;
-		key2       = key2;
 		dispencing = 1;
-		if(secondtimer < secondcount)
-		begin
-			state = state;
-			secondtimer = secondtimer+1;
-		end
-		else
-		begin
-			state = s_charge;
-		end
 	end
 	s_done:
 	begin
+	{down_5, down_10, down_25} = 0;
 		itemCode    = itemCode;
 		done        = 1;
 		failed      = 0;
-		key1        = key1;
-		key2        = key2;
-		secondtimer = 0;
 		dispencing  = 1;
-		state = state;
 	end
 	default:
 		begin
+		{down_5, down_10, down_25} = 0;
 			itemCode    = 0;
 			done        = 0;
 			failed      = 0;
-			key1        = 0;
-			key2        = 0;
-			secondtimer = 0;
 			dispencing  = 0;
-			state       = s_idle;
 		end
-	endcase
+endcase
 end
-
-
 
 
 always@(posedge clk)
 begin
 	case(state)
 	s_decode:
-		costCounter = itemCost[itemIndex[{key1, key2}]];
+		case(itemCode)
+			4'h1:costCounter = 6'd15;
+			4'h2:costCounter = 6'd13;
+			4'h3:costCounter = 6'd17;
+			4'h4:costCounter = 6'd10;
+			default:costCounter = 0;
+		endcase
 	s_charge:
 		casex({down_25, down_10, down_5})
-			3'b1xx:  costCounter = costCounter - 5;
-			3'b01x:  costCounter = costCounter - 2;
-			3'b001:  costCounter = costCounter - 1;
+			3'b1xx:  costCounter = costCounter - 6'h5;
+			3'b01x:  costCounter = costCounter - 6'h2;
+			3'b001:  costCounter = costCounter - 6'h1;
 			default: costCounter = costCounter;
 		endcase
 	default:
