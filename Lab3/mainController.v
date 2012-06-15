@@ -33,7 +33,7 @@ wire			dis_down_5, dis_down_10, dis_down_25;
 
 
 
-Dispence ud(clk, reset, dis_en, key, key_ready, coinCount, dis_itemKey, dis_done, dis_fail, dis_led,
+Dispence ud(clk, reset, dis_en, key, key_ready, coinCount, state == m_Idle, dis_itemKey, dis_done, dis_fail, dis_led,
 			dis_down_5, dis_down_10, dis_down_25);
 
 wire			n_syn,
@@ -109,7 +109,7 @@ begin
 	end
 	m_Dispence:
 	begin
-		leden = 1;
+		leden = !dis_fail;
 		dis_en = 1;
 		ret_en = 0;
 	end

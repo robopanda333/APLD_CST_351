@@ -6,6 +6,7 @@ input			enable,
 input	[3:0]	key_code,
 input			key_rdy,
 input	[5:0]	coinVal,
+input			kill,
 output	reg[3:0]	itemCode,
 output	reg		done,
 output	reg		failed,
@@ -46,30 +47,51 @@ begin
 	begin
 		secondtimer = 0;
 		state = s_idle;
+		itemCode = 0;
 	end
 	else if(!enable)
 	begin
 		secondtimer = 0;
 		state = s_idle;
+		itemCode = (kill?0:itemCode);
 	end
 	else
 	case(state)
 	s_idle:
 	begin
+		
 		secondtimer = 0;
 		//costCounter = 0;
 		if(enable)
+		begin
+			case(key_code)
+			4'h1:itemCode = 1;
+			4'h2:itemCode = 1;
+			4'h3:itemCode = 2;
+			4'h4:itemCode = 2;
+			4'h5:itemCode = 3;
+			4'h6:itemCode = 3;
+			4'h7:itemCode = 4;
+			4'h8:itemCode = 4;
+			default:	itemCode = 0;
+			endcase
 			state = s_decode;
+		end
 		else
+		begin
 			state   = state;
+			itemCode    = itemCode;
+		end
 	end
 	s_decode:
 	begin
 		secondtimer = 0;
 		state = s_charge;
+		itemCode    = itemCode;
 	end
 	s_charge:
 	begin
+			itemCode    = itemCode;
 		secondtimer = 0;
 		if(costCounter > 0)
 		begin
@@ -80,6 +102,7 @@ begin
 	end
 	s_wait1sec:
 	begin
+			itemCode   = itemCode;
 		if(secondtimer < secondcount)
 		begin
 			state = state;
@@ -93,11 +116,13 @@ begin
 	end
 	s_done:
 	begin
+			itemCode    = itemCode;
 		state = state;
 		secondtimer = 0;
 	end
 	default:
 	begin
+		itemCode    = 0;
 		secondtimer = 0;
 		state       = s_idle;
 	end
@@ -109,7 +134,6 @@ begin
 case(state)
 	s_idle:
 	begin
-		itemCode    = itemCode;
 		done        = 0;
 		failed      = 0;
 		dispencing  = 0;
@@ -121,47 +145,19 @@ case(state)
 		dispencing = 0;
 		{down_5, down_10, down_25} = 0;
 		case(key_code)
-		4'h1:begin
-			itemCode = 1;
-			failed = coinVal < 6'd15;
-		end
-		4'h2:begin
-			itemCode = 1;
-			failed = coinVal < 6'd15;
-		end
-		4'h3:begin
-			itemCode = 2;
-			failed = coinVal < 6'd13;
-		end
-		4'h4:begin
-			itemCode = 2;
-			failed = coinVal < 6'd13;
-		end
-		4'h5:begin
-			itemCode = 3;
-			failed = coinVal < 6'd17;
-		end
-		4'h6:begin
-			itemCode = 3;
-			failed = coinVal < 6'd17;
-		end
-		4'h7:begin
-			itemCode = 4;
-			failed = coinVal < 6'd10;
-		end
-		4'h8:begin
-			itemCode = 4;
-			failed = coinVal < 6'd10;
-		end
-		default:begin
-			itemCode = 0;
-			failed = 1;
-		end
+		4'h1:	failed = coinVal < 6'd15;
+		4'h2:	failed = coinVal < 6'd15;
+		4'h3:	failed = coinVal < 6'd13;
+		4'h4:	failed = coinVal < 6'd13;
+		4'h5:	failed = coinVal < 6'd17;
+		4'h6:	failed = coinVal < 6'd17;
+		4'h7:	failed = coinVal < 6'd10;
+		4'h8:	failed = coinVal < 6'd10;
+		default:failed = 1;
 		endcase
 	end
 	s_charge:
 	begin
-		itemCode    = itemCode;
 		done        = 0;
 		failed      = 0;
 		dispencing  = 1;
@@ -172,7 +168,6 @@ case(state)
 	s_wait1sec:
 	begin
 	{down_5, down_10, down_25} = 0;
-		itemCode   = itemCode;
 		done       = 0;
 		failed     = 0;
 		dispencing = 1;
@@ -180,19 +175,17 @@ case(state)
 	s_done:
 	begin
 	{down_5, down_10, down_25} = 0;
-		itemCode    = itemCode;
 		done        = 1;
 		failed      = 0;
 		dispencing  = 1;
 	end
 	default:
-		begin
+	begin
 		{down_5, down_10, down_25} = 0;
-			itemCode    = 0;
-			done        = 0;
-			failed      = 0;
-			dispencing  = 0;
-		end
+		done        = 0;
+		failed      = 0;
+		dispencing  = 0;
+	end
 endcase
 end
 
